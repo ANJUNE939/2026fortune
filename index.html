@@ -10,10 +10,10 @@
   <meta name="description" content="2026 최신 모든 사주·궁합·재물·직업·가족운을 한 번에" />
   <title>WHAT IS YOUR FATE? | 2026 Fortune Report</title>
   <link rel="manifest" href="./manifest.webmanifest" />
-  <link rel="stylesheet" href="./style.css?v=10.0.0" />
+  <link rel="stylesheet" href="./style.css?v=11.0.0" />
 
   <script>
-    window.FORTUNE_BUILD = "v10-test-no-cache";
+    window.FORTUNE_BUILD = "v11-page-flow";
     (function(){
       try {
         if ("caches" in window) {
@@ -45,6 +45,12 @@
   </header>
 
   <main class="wrap">
+    <nav id="stepProgress" class="step-progress" aria-label="진행 단계">
+      <span class="step-dot active" data-step-dot="login">PIN</span>
+      <span class="step-dot" data-step-dot="form">정보입력</span>
+      <span class="step-dot" data-step-dot="menu">분석선택</span>
+      <span class="step-dot" data-step-dot="result">결과</span>
+    </nav>
     <section id="screen-login" class="screen active hero">
       <div class="glass-stage" aria-hidden="true">
         <div class="glass-ring"></div>
@@ -70,13 +76,14 @@
         <div id="pinMessage" class="message"></div>
       </div>
 
-      <div class="credit">1to75 build lab · V10 TEST</div>
+      <div class="credit">1to75 build lab · V11 PAGE</div>
     </section>
 
     <section id="screen-form" class="screen section">
-      <div class="badge">STEP 01</div>
+      <div class="badge">STEP 02</div>
       <h2 class="section-title">정보 입력</h2>
       <p class="section-copy">내 정보만 입력해도 운세를 볼 수 있습니다. 상대 정보를 넣으면 궁합, 가족 정보를 넣으면 가족관계 분석이 열립니다.</p>
+      <div class="quick-next-form"><button class="btn primary full" type="button" data-action="go-menu">분석 정보 선택으로 이동</button></div>
 
       <div class="card">
         <div class="section-head">
@@ -157,9 +164,9 @@
     </section>
 
     <section id="screen-menu" class="screen section">
-      <div class="badge">STEP 02</div>
+      <div class="badge">STEP 03</div>
       <h2 class="section-title">분석 정보 선택</h2>
-      <p class="section-copy">궁금한 항목을 누르면 바로 결과가 나옵니다. 프롬프트는 보여주지 않고, 고객이 바로 이해할 수 있는 해설만 보여줍니다.</p>
+      <p class="section-copy">궁금한 항목을 누르면 결과 페이지로 바로 전환됩니다. 프롬프트는 보여주지 않고, 고객이 바로 이해할 수 있는 해설만 보여줍니다.</p>
       <div id="sajuSummary" class="mini-report"></div>
       <div id="menuGrid" class="menu-grid"></div>
       <div class="button-row">
@@ -169,7 +176,7 @@
     </section>
 
     <section id="screen-result" class="screen section">
-      <div class="badge">STEP 03</div>
+      <div class="badge">STEP 04</div>
       <h2 id="resultTitle" class="section-title">결과</h2>
       <p id="resultSub" class="section-copy"></p>
       <div id="saveStatus" class="save-status"></div>
@@ -185,8 +192,8 @@
   </main>
 </div>
 
-<script src="./data/sajuCore.js?v=10.0.0"></script>
-<script src="./data/reportEngine.js?v=10.0.0"></script>
-<script src="./app.js?v=10.0.0"></script>
+<script src="./data/sajuCore.js?v=11.0.0"></script>
+<script src="./data/reportEngine.js?v=11.0.0"></script>
+<script src="./app.js?v=11.0.0"></script>
 </body>
 </html>

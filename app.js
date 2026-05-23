@@ -11,6 +11,7 @@
   } catch(e) {}
 
   const PIN="0303";
+  const FORTUNE_APP_VERSION="v11-page-flow";
   // Google Apps Script 배포 URL을 넣으면 스프레드시트 저장이 활성화됩니다.
   const SHEET_ENDPOINT="https://script.google.com/macros/s/AKfycbxtnSXuvyiovE87BQeHeMf46zqlfsEE-ILPTsj5CdmTqr2xgjd-c6zfqtvqIqnscdI/exec";
   const $=id=>document.getElementById(id);
@@ -20,12 +21,42 @@
   ids.forEach(id=>E[id]=$(id));
 
   function screen(id,push=true){
-    document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
-    $("screen-"+id).classList.add("active");
-    if(push){ history=history.slice(0,hIndex+1); history.push(id); hIndex=history.length-1; }
+    const screens = document.querySelectorAll(".screen");
+    screens.forEach(s=>{
+      s.classList.remove("active");
+      s.setAttribute("aria-hidden","true");
+      s.style.display = "none";
+    });
+    const target = $("screen-"+id);
+    if(!target) return;
+    target.classList.add("active");
+    target.setAttribute("aria-hidden","false");
+    target.style.display = "";
+    document.body.setAttribute("data-current-screen", id);
+    document.body.classList.toggle("page-lock", id !== "login");
+
+    if(push){
+      history = history.slice(0,hIndex+1);
+      if(history[history.length-1] !== id){
+        history.push(id);
+        hIndex = history.length-1;
+      }
+    }
+
     updateNav();
-    scrollTo({top:0,behavior:"smooth"});
+    updateProgress(id);
+    window.scrollTo({top:0,left:0,behavior:"instant"});
+    setTimeout(()=>window.scrollTo(0,0), 40);
   }
+
+  function updateProgress(id){
+    const progress = $("stepProgress");
+    if(progress) progress.classList.toggle("show", id !== "login");
+    document.querySelectorAll("[data-step-dot]").forEach(dot=>{
+      dot.classList.toggle("active", dot.dataset.stepDot === id);
+    });
+  }
+
   function updateNav(){
     document.querySelector('[data-action="back"]').disabled=hIndex<=0;
     document.querySelector('[data-action="forward"]').disabled=hIndex>=history.length-1;
@@ -77,7 +108,7 @@
   }
   function goMenu(){
     const p=profile();
-    if(!p.me.birth){ alert("내 생년월일은 반드시 입력해 주세요."); return; }
+    if(!p.me.birth){ alert("정보 입력 페이지에서 내 생년월일을 입력해 주세요."); return; }
     if(!p.privacyAgree){ alert("개인정보 수집 및 저장 동의에 체크해 주세요."); return; }
     save();
     E.sum.textContent=ENGINE.summary(SAJU.analyze(p.me,p.manseMemo));
