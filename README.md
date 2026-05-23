@@ -9,3 +9,11 @@
 - 단정/공포/의학/투자 확정 표현은 제외하고 참고용 자기이해 콘텐츠 유지
 - Google Sheets 새 배포 URL 유지
 - 음력 변환/24절기 기반 계산 유지
+
+
+## GitHub Pages 배포 오류 해결
+
+이 버전에는 `.nojekyll` 파일이 포함되어 있습니다.  
+GitHub Pages가 Jekyll로 `backend/README.md` 등을 처리하다가 실패하는 문제를 막기 위한 파일입니다.
+
+업로드 후 저장소 최상단에 `.nojekyll` 파일이 보여야 합니다.
