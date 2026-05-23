@@ -2,12 +2,34 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="theme-color" content="#030305" />
   <meta name="description" content="2026 최신 모든 사주·궁합·재물·직업·가족운을 한 번에" />
   <title>WHAT IS YOUR FATE? | 2026 Fortune Report</title>
   <link rel="manifest" href="./manifest.webmanifest" />
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./style.css?v=10.0.0" />
+
+  <script>
+    window.FORTUNE_BUILD = "v10-test-no-cache";
+    (function(){
+      try {
+        if ("caches" in window) {
+          caches.keys().then(function(keys){
+            keys.forEach(function(key){ caches.delete(key); });
+          });
+        }
+        if ("serviceWorker" in navigator) {
+          navigator.serviceWorker.getRegistrations().then(function(regs){
+            regs.forEach(function(reg){ reg.unregister(); });
+          });
+        }
+      } catch(e) {}
+    })();
+  </script>
+
 </head>
 <body>
 <div class="app">
@@ -48,7 +70,7 @@
         <div id="pinMessage" class="message"></div>
       </div>
 
-      <div class="credit">1to75 build lab</div>
+      <div class="credit">1to75 build lab · V10 TEST</div>
     </section>
 
     <section id="screen-form" class="screen section">
@@ -163,8 +185,8 @@
   </main>
 </div>
 
-<script src="./data/sajuCore.js"></script>
-<script src="./data/reportEngine.js"></script>
-<script src="./app.js"></script>
+<script src="./data/sajuCore.js?v=10.0.0"></script>
+<script src="./data/reportEngine.js?v=10.0.0"></script>
+<script src="./app.js?v=10.0.0"></script>
 </body>
 </html>

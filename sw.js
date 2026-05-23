@@ -1,1 +1,24 @@
-const CACHE_NAME="fortune-ai-v9";const ASSETS=["./","./index.html","./style.css","./app.js","./data/sajuCore.js","./data/reportEngine.js","./manifest.webmanifest"];self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE_NAME).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));self.addEventListener("fetch",e=>e.respondWith(caches.match(e.request).then(c=>c||fetch(e.request).then(r=>{const copy=r.clone();caches.open(CACHE_NAME).then(cache=>cache.put(e.request,copy)).catch(()=>{});return r;}).catch(()=>caches.match("./index.html")))));
+// Fortune Fate V10 TEST - cache killer service worker
+// This file deletes old caches and unregisters itself.
+self.addEventListener('install', event => {
+  self.skipWaiting();
+  event.waitUntil(
+    caches.keys().then(keys => Promise.all(keys.map(key => caches.delete(key))))
+  );
+});
+
+self.addEventListener('activate', event => {
+  event.waitUntil((async () => {
+    const keys = await caches.keys();
+    await Promise.all(keys.map(key => caches.delete(key)));
+    await self.registration.unregister();
+    const clientsList = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+    for (const client of clientsList) {
+      client.navigate(client.url);
+    }
+  })());
+});
+
+self.addEventListener('fetch', event => {
+  event.respondWith(fetch(event.request, { cache: 'no-store' }));
+});

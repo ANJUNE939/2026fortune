@@ -1,10 +1,10 @@
 {
-  "name": "2026 Fortune Report V9",
-  "short_name": "Fortune AI",
+  "name": "2026 Fortune Report V10 TEST",
+  "short_name": "Fortune V10",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#030305",
   "theme_color": "#030305",
-  "description": "음력 변환과 24절기 기반 오프라인 사주 리포트",
+  "description": "테스트용 캐시 제거 버전",
   "icons": []
 }

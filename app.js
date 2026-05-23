@@ -1,4 +1,15 @@
 (function(){
+
+  // V10 TEST: remove old service workers/caches so friends always see latest version.
+  try {
+    if ("caches" in window) {
+      caches.keys().then(keys => keys.forEach(key => caches.delete(key)));
+    }
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(reg => reg.unregister()));
+    }
+  } catch(e) {}
+
   const PIN="0303";
   // Google Apps Script 배포 URL을 넣으면 스프레드시트 저장이 활성화됩니다.
   const SHEET_ENDPOINT="https://script.google.com/macros/s/AKfycbxtnSXuvyiovE87BQeHeMf46zqlfsEE-ILPTsj5CdmTqr2xgjd-c6zfqtvqIqnscdI/exec";
@@ -170,6 +181,6 @@
   });
 
   E.pin.addEventListener("keydown",e=>{ if(e.key==="Enter") login(); });
-  if("serviceWorker" in navigator){ addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{})); }
+  
   load(); updateNav();
 })();
