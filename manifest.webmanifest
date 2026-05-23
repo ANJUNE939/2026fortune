@@ -1,10 +1,10 @@
 {
-  "name": "2026 Fortune Report V11 PAGE",
-  "short_name": "Fortune V11",
+  "name": "2026 Fortune Report V14 MASTER",
+  "short_name": "Fortune V14",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#030305",
   "theme_color": "#030305",
-  "description": "페이지 전환형 테스트 버전",
+  "description": "십신·신살·대운·궁합 다양화 강화 버전",
   "icons": []
 }

@@ -11,7 +11,7 @@
   } catch(e) {}
 
   const PIN="0303";
-  const FORTUNE_APP_VERSION="v11-page-flow";
+  const FORTUNE_APP_VERSION="v14-master-saju";
   // Google Apps Script 배포 URL을 넣으면 스프레드시트 저장이 활성화됩니다.
   const SHEET_ENDPOINT="https://script.google.com/macros/s/AKfycbxtnSXuvyiovE87BQeHeMf46zqlfsEE-ILPTsj5CdmTqr2xgjd-c6zfqtvqIqnscdI/exec";
   const $=id=>document.getElementById(id);
@@ -206,7 +206,7 @@
     if(rm){ families.splice(Number(rm.dataset.remove),1); renderFamily(); save(); }
     const menu=e.target.closest("[data-report]");
     if(menu){
-      if(menu.dataset.locked){ alert(menu.dataset.locked==="partner"?"궁합 분석을 위해 상대방 이름과 생년월일을 입력해 주세요.":"가족 관계 분석을 위해 가족 정보를 1명 이상 추가해 주세요."); return; }
+      if(menu.dataset.locked){ alert(menu.dataset.locked==="partner"?"궁합/친구 궁합 분석을 위해 상대 또는 친구 이름과 생년월일을 입력해 주세요.":"가족 관계 분석을 위해 가족 정보를 1명 이상 추가해 주세요."); return; }
       make(menu.dataset.report);
     }
   });
