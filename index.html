@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#030305" />
+  <meta name="description" content="2026 최신 모든 사주·궁합·재물·직업·가족운을 한 번에" />
+  <title>WHAT IS YOUR FATE? | 2026 Fortune Report</title>
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="app">
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <button class="navbtn" type="button" data-action="back" aria-label="뒤로가기">‹</button>
+    <button class="brand" type="button" data-action="home" aria-label="처음으로">
+      <span class="brand-mark"></span>
+      <span>FORTUNE AI</span>
+    </button>
+    <button class="navbtn" type="button" data-action="forward" aria-label="앞으로가기">›</button>
+  </header>
+
+  <main class="wrap">
+    <section id="screen-login" class="screen active hero">
+      <div class="glass-stage" aria-hidden="true">
+        <div class="glass-ring"></div>
+        <div class="glass-orb"></div>
+        <span class="spark s1"></span>
+        <span class="spark s2"></span>
+        <span class="spark s3"></span>
+      </div>
+
+      <h1 class="hero-title">WHAT IS<br>YOUR <span>FATE?</span></h1>
+
+      <div class="hero-copy">
+        <div class="hero-line hero-en">2026 FORTUNE REPORT</div>
+        <div class="hero-gap"></div>
+        <div class="hero-line hero-ko">2026 최신 모든 사주·궁합·재물·직업·가족운을 한 번에</div>
+        <div class="hero-gap"></div>
+      </div>
+
+      <div class="pin-card">
+        <div class="pin-label">SECRET REPORT ACCESS</div>
+        <input id="pinInput" type="password" inputmode="numeric" placeholder="PIN 번호 입력하기" maxlength="8" autocomplete="off" />
+        <button class="btn primary full" type="button" data-action="login">운세 리포트 열기</button>
+        <div id="pinMessage" class="message"></div>
+      </div>
+
+      <div class="credit">1to75 build lab</div>
+    </section>
+
+    <section id="screen-form" class="screen section">
+      <div class="badge">STEP 01</div>
+      <h2 class="section-title">정보 입력</h2>
+      <p class="section-copy">내 정보만 입력해도 운세를 볼 수 있습니다. 상대 정보를 넣으면 궁합, 가족 정보를 넣으면 가족관계 분석이 열립니다.</p>
+
+      <div class="card">
+        <div class="section-head">
+          <h3>내 정보</h3>
+          <button class="text-btn" type="button" data-action="fill-sample">샘플 입력</button>
+        </div>
+
+        <div class="form-grid">
+          <label><span>이름/별명</span><input id="myName" placeholder="예: 지훈" /></label>
+          <label><span>생년월일</span><input id="myBirth" type="date" /></label>
+          <label><span>태어난 시간</span><input id="myTime" type="time" /></label>
+          <label><span>성별</span><select id="myGender"><option>여성</option><option>남성</option><option>기타/미입력</option></select></label>
+          <label><span>양력/음력</span><select id="myCalendar"><option>양력</option><option>음력</option><option>모름</option></select></label>
+          <label><span>가장 궁금한 것</span><input id="myConcern" placeholder="예: 돈, 연애, 결혼, 직업, 가족" /></label>
+        </div>
+
+        <hr />
+
+        <div class="section-head">
+          <h3>상대 정보 <em>선택</em></h3>
+          <button class="text-btn" type="button" data-action="clear-partner">비우기</button>
+        </div>
+        <div class="form-grid">
+          <label><span>이름/별명</span><input id="partnerName" placeholder="예: 상대" /></label>
+          <label><span>생년월일</span><input id="partnerBirth" type="date" /></label>
+          <label><span>태어난 시간</span><input id="partnerTime" type="time" /></label>
+          <label><span>관계</span><select id="partnerType"><option>연인</option><option>썸</option><option>배우자</option><option>재회 고민</option><option>결혼 고민</option></select></label>
+        </div>
+
+        <hr />
+
+        <div class="section-head">
+          <h3>가족 정보 <em>선택 / 여러 명 가능</em></h3>
+          <button class="text-btn" type="button" data-action="clear-family">전체 삭제</button>
+        </div>
+        <div class="form-grid">
+          <label><span>이름/별명</span><input id="familyName" placeholder="예: 어머니" /></label>
+          <label><span>관계</span><input id="familyRelation" placeholder="예: 부모, 자녀, 형제" /></label>
+          <label><span>생년월일</span><input id="familyBirth" type="date" /></label>
+          <label><span>태어난 시간</span><input id="familyTime" type="time" /></label>
+        </div>
+        <div class="button-row"><button class="btn secondary" type="button" data-action="add-family">+ 가족 추가</button></div>
+        <div id="familyList" class="family-list"></div>
+
+        <hr />
+
+        <label class="wide">
+          <span>만세력 8글자 직접 입력 <em>선택 / 있으면 정확도 보완</em></span>
+          <textarea id="manseMemo" placeholder="예: 갑자년 병인월 계사일 갑인시"></textarea>
+        </label>
+
+        <div class="privacy-box">
+          <label class="checkline">
+            <input id="privacyAgree" type="checkbox" />
+            <span>개인정보 수집 및 저장에 동의합니다.</span>
+          </label>
+          <p class="privacy-main">
+            입력하신 정보는 운세 리포트 제공 및 이용 기록 관리를 위해 저장됩니다.<br>
+            보관 기간은 운영 목적 달성 후 최대 12개월이며,<br>
+            삭제 요청은 관리자에게 문의하실 수 있습니다.
+          </p>
+          <button class="text-btn" type="button" data-action="toggle-privacy">자세히 보기</button>
+          <div id="privacyDetail" class="privacy-detail">
+            <b>수집 항목</b><br>
+            이름/별명, 생년월일, 태어난 시간, 성별, 양력/음력 여부, 현재 고민, 상대 정보, 가족 정보, 선택한 분석 메뉴, 접속 브라우저 정보 일부<br><br>
+            <b>이용 목적</b><br>
+            운세 리포트 생성, 이용 기록 확인, 서비스 개선<br><br>
+            <b>주의</b><br>
+            생년월일은 개인정보에 해당합니다. 실제 고객 대상 운영 시 개인정보처리방침, 보관 기간 안내, 삭제 요청 방법, 관리자 연락처를 별도로 준비하세요.
+          </div>
+        </div>
+
+        <div class="button-row sticky-actions">
+          <button class="btn primary" type="button" data-action="go-menu">분석 정보 보기</button>
+          <button class="btn ghost" type="button" data-action="reset-all">초기화</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="screen-menu" class="screen section">
+      <div class="badge">STEP 02</div>
+      <h2 class="section-title">분석 정보 선택</h2>
+      <p class="section-copy">궁금한 항목을 누르면 바로 결과가 나옵니다. 프롬프트는 보여주지 않고, 고객이 바로 이해할 수 있는 해설만 보여줍니다.</p>
+      <div id="sajuSummary" class="mini-report"></div>
+      <div id="menuGrid" class="menu-grid"></div>
+      <div class="button-row">
+        <button class="btn ghost" type="button" data-action="back-form">정보 수정</button>
+        <button class="btn secondary" type="button" data-action="make-all">전체 종합 리포트</button>
+      </div>
+    </section>
+
+    <section id="screen-result" class="screen section">
+      <div class="badge">STEP 03</div>
+      <h2 id="resultTitle" class="section-title">결과</h2>
+      <p id="resultSub" class="section-copy"></p>
+      <div id="saveStatus" class="save-status"></div>
+      <div class="button-row">
+        <button class="btn primary" type="button" data-action="copy-report">최종 결과 복사</button>
+        <button class="btn secondary" type="button" data-action="download-report">TXT 저장</button>
+        <button class="btn secondary" type="button" data-action="print-report">인쇄/PDF</button>
+        <button class="btn ghost" type="button" data-action="back-menu">다른 분석</button>
+      </div>
+      <article id="report" class="result-wrap"></article>
+      <p class="notice">※ 이 결과는 참고용 자기이해 콘텐츠입니다. 의학·법률·투자·결혼 여부의 최종 판단을 대신하지 않습니다.</p>
+    </section>
+  </main>
+</div>
+
+<script src="./data/sajuCore.js"></script>
+<script src="./data/reportEngine.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>

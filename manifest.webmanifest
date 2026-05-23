@@ -1,0 +1,10 @@
+{
+  "name": "2026 Fortune Report V7",
+  "short_name": "Fortune AI",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#030305",
+  "theme_color": "#030305",
+  "description": "음력 변환과 24절기 기반 오프라인 사주 리포트",
+  "icons": []
+}
