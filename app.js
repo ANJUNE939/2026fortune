@@ -11,7 +11,7 @@
   } catch(e) {}
 
   const PIN="0303";
-  const FORTUNE_APP_VERSION="v14-master-saju";
+  const FORTUNE_APP_VERSION="v17-longform-all-reports";
   // Google Apps Script 배포 URL을 넣으면 스프레드시트 저장이 활성화됩니다.
   const SHEET_ENDPOINT="https://script.google.com/macros/s/AKfycbxtnSXuvyiovE87BQeHeMf46zqlfsEE-ILPTsj5CdmTqr2xgjd-c6zfqtvqIqnscdI/exec";
   const $=id=>document.getElementById(id);

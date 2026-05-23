@@ -1,10 +1,10 @@
 {
-  "name": "2026 Fortune Report V14 MASTER",
-  "short_name": "Fortune V14",
+  "name": "2026 Fortune Report V17 LONG",
+  "short_name": "Fortune V17",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#030305",
   "theme_color": "#030305",
-  "description": "십신·신살·대운·궁합 다양화 강화 버전",
+  "description": "전체 분석 장문 강화 버전",
   "icons": []
 }
